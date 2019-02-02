@@ -9,7 +9,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 const store = createStore(Reducers, applyMiddleware(thunk));
 store.subscribe(() => console.log("store", store.getState()));
-store.dispatch(getAllRestaurants());
 
 ReactDOM.render(
     <BrowserRouter>
