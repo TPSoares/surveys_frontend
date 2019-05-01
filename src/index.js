@@ -5,15 +5,14 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import Reducers from "./reducers/index";
 import thunk from "redux-thunk";
-import { BrowserRouter, Route } from "react-router-dom";
+import axios from 'axios';
+window.axios = axios;
 
 const store = createStore(Reducers, applyMiddleware(thunk));
 store.subscribe(() => console.log("store", store.getState()));
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <Route exact path="/" component={App}></Route>
-        </Provider>
-    </BrowserRouter>, document.getElementById("root")
+    <Provider store={store}>
+        <App />
+    </Provider>, document.getElementById("root")
 );
