@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import "../styles/style.css";
 
 import { getAllSurveys } from '../actions/surveys';
@@ -55,13 +56,17 @@ class Dashboard extends Component {
                         return (
 
                             <div key={survey.id} className="card surveys">
+                                <Link 
+                                    className="survey-link"
+                                    to={{pathname: 'survey', state: {...survey, status}}}
+                                >
                                 <div className="card-header info" style={{backgroundColor: status === 'between' ? '#1aff1a' : (status === 'coming' ? '#ffd633' : '#ff3333' )}}>
                                     <strong>{survey.title}</strong> {survey.start_date} - {survey.end_date}
                                 </div>
 
                                 <div className="card-body">
                                     <p><strong>Description: </strong>{survey.description}</p>
-                                    <hr></hr>
+                                    {/* <hr></hr>
                                     {
                                         survey.survey_options.map(options => {
                                             return (
@@ -71,8 +76,9 @@ class Dashboard extends Component {
                                                 </div>
                                             )
                                         })
-                                    }
+                                    } */}
                                 </div>
+                                </Link>
                             </div>
                         )
                     })
