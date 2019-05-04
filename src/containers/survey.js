@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 import { Formik, Field } from "formik";
+import { sendVote } from '../actions/surveys';
 import Yup from "yup";
 import "../styles/style.css";
 
@@ -10,8 +11,13 @@ class Survey extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            survey: {}
+            survey: {},
+            selectedOption: ''
         }
+
+        this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.vote = this.vote.bind(this);
+        
     }
 
     componentWillMount() {
@@ -20,11 +26,38 @@ class Survey extends Component {
         })
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(this.props.surveys !== nextProps.surveys) {
+            // console.log("newprops", nextProps);
+            this.setState({
+                survey: {
+                    id: nextProps.surveys[0].id,
+                    description: nextProps.surveys[0].description,
+                    end_date: nextProps.surveys[0].end_date,
+                    start_date: nextProps.surveys[0].start_date,
+                    status: this.state.survey.status,
+                    survey_options: nextProps.surveys[0].survey_options,
+                    title: nextProps.surveys[0].title
+                }
+            })
+        }
+    
+    }
+
+    handleOptionChange = (changeEvent) => {
+        this.setState({
+          selectedOption: changeEvent.target.value
+        });
+    }
+
+    vote = () => {
+        this.props.sendVote(this.state.selectedOption);
+    }
+
+
     render() {
 
-        
-
-        console.log(this.props);
+        console.log("AAAAA", this.state.survey);
         return(
             <div className="container">
                 <div className="card">
@@ -38,14 +71,17 @@ class Survey extends Component {
                             this.state.survey.survey_options.map(options => {
                                 return (
                                     <div key={options.id} className="survey_options">
-                                        <input type="radio" name={options.survey_title}></input>
+                                        <div>
+                                            <input type="radio" name={options.option_title} value={options.id} checked={this.state.selectedOption === options.id} onChange={this.handleOptionChange}>
+                                            </input>{options.option_title}
+                                        </div>
                                     {options.votes} votes
                                     </div>
                                 )
                             })
                         }
                         <div className="vote">
-                            <a href="#" className="btn btn-primary">Votar</a>
+                            <button className="btn btn-primary" onClick={() => {this.vote()}}>Votar</button>
                         </div>
                     </div>
                 </div>
@@ -59,12 +95,12 @@ class Survey extends Component {
 
 function mapStateToProps(state) {
     return {
-        // surveys: state.surveys
+        surveys: state.surveys
     };
 }
 
 function mapDispatchToProps (dispatch) {
-    return bindActionCreators({ }, dispatch)
+    return bindActionCreators({ sendVote }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Survey);

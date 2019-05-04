@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import "../styles/style.css";
+import Nav from '../components/Navbar';
 
 import { getAllSurveys } from '../actions/surveys';
 
@@ -16,6 +17,7 @@ class Dashboard extends Component {
         console.log(this.props.surveys);
         return(
             <div>
+                <Nav />
                 <div className="container image-container">
 
                 {
@@ -50,8 +52,8 @@ class Dashboard extends Component {
                             status = 'coming';
                         }
                         console.log(dateCheck > from && dateCheck < to)
-                        console.log(from)
-                        console.log(status)
+                        // console.log(from)
+                        // console.log(status)
 
                         return (
 
