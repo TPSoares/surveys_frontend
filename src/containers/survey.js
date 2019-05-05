@@ -3,7 +3,6 @@ import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { sendVote, deleteSurvey } from '../actions/surveys';
-import Yup from "yup";
 import "../styles/style.css";
 
 class Survey extends Component {

@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
-import { Form, FormControl, Button, Input } from 'react-bootstrap';
+import { Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "../styles/style.css";
 
@@ -62,7 +62,6 @@ class Edit extends Component {
                         handleChange,
                         handleSubmit,
                         handleBlur,
-                        isSubmitting,
                         errors,
                         touched,
                     } = props;

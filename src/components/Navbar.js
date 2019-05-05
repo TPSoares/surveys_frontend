@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Navbar, Form, FormControl } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
