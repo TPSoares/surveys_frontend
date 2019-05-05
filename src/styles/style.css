@@ -55,12 +55,43 @@ p {
 
 .button {
     margin-right: 20px;
+    
+}
+
+.button-delete,
+.button-edit {
+    border: 1px solid #555;
+
+}
+.button-delete:hover {
+    color: #C00;
+    border-color: #C00;
+}
+.button-edit:hover {
+    color: #6579ea;
+    border-color: #6579ea;
+}
+
+.card-title {
+    margin: 0px;
 }
 
 .survey-edit-delete {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    align-items: center;
+    /* margin-top: 20px; */
+}
+
+.survey_options input {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.options {
+    display: flex;
 }
 
 /* NAVBAR */
@@ -76,4 +107,13 @@ p {
 
 .nav-items {
     color: #FFF;
+}
+
+.form {
+    margin-top: 200px;
+}
+
+.form-field {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

@@ -28,7 +28,7 @@ class Newsurvey extends Component {
 
         return (
             
-            <div className="container">
+            <div className="container form">
      
                 <Formik
                     initialValues={{
@@ -64,7 +64,7 @@ class Newsurvey extends Component {
                         <div className="form-div-signup">
                             <Form className="form-div-inside-signup" onSubmit={handleSubmit}>
                             
-                                <FormControl className="form-control-signup" 
+                                <FormControl className="form-control form-field" 
                                 type="text" 
                                 name="title" 
                                 placeholder="Título"
@@ -74,17 +74,17 @@ class Newsurvey extends Component {
                                 />
                                 {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
 
-                                <FormControl className="form-control"
+                                <FormControl className="form-control form-field"
                                 type="text" 
                                 name="description" 
-                                placeholder="description"
+                                placeholder="Descrição"
                                 value={values.description}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 /> 
                                 {errors.description && touched.description && <div className="input-feedback" >{errors.description}</div>}
-                                <p>Coloque no mínimo 3 opções, separe-as por uma vírgula</p>
-                                <FormControl className="form-control"
+                                <p>Coloque no mínimo 3 opções, separe-as por uma vírgula (Ex.: Opção 1, Opção 2, Opção 3)</p>
+                                <FormControl className="form-control form-field"
                                 type="text" 
                                 name="survey_options" 
                                 placeholder="Opções da enquete"
@@ -94,7 +94,7 @@ class Newsurvey extends Component {
                                 /> 
                                 {errors.survey_options && touched.survey_options && <div className="input-feedback" >{errors.survey_options}</div>}
                                
-                                <FormControl className="form-control"
+                                <FormControl className="form-control form-field"
                                 type="date" 
                                 name="start_date" 
                                 placeholder="Data de início"
@@ -104,7 +104,7 @@ class Newsurvey extends Component {
                                 /> 
                                 {errors.start_date && touched.start_date && <div className="input-feedback" >{errors.start_date}</div>}
                                 
-                                <FormControl className="form-control"
+                                <FormControl className="form-control form-field"
                                 type="date" 
                                 name="end_date" 
                                 placeholder="Data de fim"
@@ -114,11 +114,11 @@ class Newsurvey extends Component {
                                 /> 
                                 {errors.end_date && touched.end_date && <div className="input-feedback" >{errors.end_date}</div>}
 
-                                <Button className="btn btn-primary" type="submit">
+                                <Button className="btn btn-primary button" type="submit">
                                     Criar
                                 </Button>
                                 
-                                <Link className="btn btn-danger" to="/">
+                                <Link className="btn btn-danger button" to="/">
                                     Cancelar
                                 </Link>
                             </Form> 

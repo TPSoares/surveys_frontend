@@ -65,42 +65,45 @@ class Survey extends Component {
         return(
             <div className="container">
                 <div className="card survey">
-                <div className="card-header info" style={{backgroundColor: this.state.survey.status === 'between' ? '#1aff1a' : (this.state.survey.status === 'coming' ? '#ffd633' : '#ff3333' )}}>
-                    <strong>{this.state.survey.title} </strong> <p>{this.state.survey.status === 'between' ? 'Em andamento' : (this.state.survey.status === 'coming' ? 'Não iniciada' : 'Finalizada' )}</p> Início: {this.state.survey.start_date} - Fim: {this.state.survey.end_date}
+                <div className="card-header info" style={{backgroundColor: this.state.survey.status === 'between' ? '#00cc00' : (this.state.survey.status === 'coming' ? '#ffd633' : '#e60000' )}}>
+                    <strong>{this.state.survey.title} </strong> <p>Status: {this.state.survey.status === 'between' ? 'Em andamento' : (this.state.survey.status === 'coming' ? 'Não iniciada' : 'Finalizada' )}</p> Início: {this.state.survey.start_date} - Fim: {this.state.survey.end_date}
                 </div>
                     <div className="card-body">
+                    <div className="survey-edit-delete">
                         <h5 className="card-title">{this.state.survey.description}</h5>
-                        <hr></hr>
-                        {
-                            this.state.survey.survey_options.map(options => {
-                                return (
-                                    <div key={options.id} className="survey_options">
-                                        <div>
-                                            <input type="radio" name={options.option_title} value={options.id} checked={this.state.selectedOption === options.id} onChange={this.handleOptionChange}>
-                                            </input>{options.option_title}
-                                        </div>
-                                    {options.votes} votes
-                                    </div>
-                                )
-                            })
-                        }
-                        <div className="vote">
-                            <button className="btn btn-primary button" disabled={this.state.survey.status !== 'between'} onClick={() => {this.vote()}}>Votar</button>
-                            <Link className="btn btn-danger button" to="/">
-                                Cancelar
-                            </Link>
-                        </div>
+                        <div className="">
+                            <Link className="btn btn-default button button-edit" to={{pathname: 'edit', survey: this.state.survey}}>Editar enquete</Link>
 
-                        <div className="survey-edit-delete">
-                            <Link className="btn btn-warning button" to={{pathname: 'edit', survey: this.state.survey}}>Editar enquete</Link>
-
-                            <button className="btn btn-danger button" onClick={
+                            <button className="btn btn-default button button-delete" onClick={
                                 async () => {
                                     await this.delete()
                                     this.props.history.push('/');
                                     
                                 }
                             }>Deletar enquete</button>
+                        </div>
+                    </div>
+                        <hr></hr>
+                        {
+                            this.state.survey.survey_options.map(options => {
+                                return (
+                                    <div key={options.id} className="survey_options">
+                                        <div className="options">
+                                            <input type="checkbox" name={options.option_title} value={options.id} checked={this.state.selectedOption === options.id} onChange={this.handleOptionChange} disabled={this.state.survey.status !== 'between'}>
+                                            </input><h5>{options.option_title}</h5>
+                                        </div>
+                                    <h5>{options.votes} votos</h5>
+                                    </div>
+                        
+                                )
+                            })
+                        }
+                        <hr></hr>
+                        <div className="vote">
+                            <button className="btn btn-primary button" disabled={this.state.survey.status !== 'between'} onClick={() => {this.vote()}}>Votar</button>
+                            <Link className="btn btn-danger button" to="/">
+                                Cancelar
+                            </Link>
                         </div>
                         
                     </div>

@@ -6,7 +6,8 @@ import {
 import axios from 'axios';
 
 export const getAllSurveys = () => async dispatch => {
-    const request = "http://localhost/signoweb_backend/surveys";
+    // const request = "http://localhost/signoweb_backend/surveys";
+    const request = "http://api-surveys.tpsoares.com/surveys";
 
     try {
         const response = await axios.get(request);
@@ -32,8 +33,10 @@ export const getAllSurveys = () => async dispatch => {
 }
 
 export const sendVote = (vote) => async dispatch => {
-    const request = `http://localhost/signoweb_backend/survey_options/${vote}`;
+    // const request = `http://localhost/signoweb_backend/survey_options/${vote}`;
+    const request = `http://api-surveys.tpsoares.com/survey_options/${vote}`;
 
+    console.log(vote);
     try {
         const response = await axios.post(request);
         console.log("RESPONSE", response);
@@ -58,7 +61,8 @@ export const sendVote = (vote) => async dispatch => {
 }
 
 export const edit = (id, values) => async dispatch => {
-    const request = `http://localhost/signoweb_backend/surveys/edit/${id}`;
+    // const request = `http://localhost/signoweb_backend/surveys/edit/${id}`;
+    const request = `http://api-surveys.tpsoares.com/surveys/edit/${id}`;
 
     try {
         const response = await axios.post(request, {
@@ -90,7 +94,8 @@ export const edit = (id, values) => async dispatch => {
 }
 
 export const deleteSurvey = (id) => async dispatch => {
-    const request = `http://localhost/signoweb_backend/surveys/${id}`;
+    // const request = `http://localhost/signoweb_backend/surveys/${id}`;
+    const request = `http://api-surveys.tpsoares.com/surveys/${id}`;
 
     // console.log("ID", id);
 
@@ -119,7 +124,8 @@ export const deleteSurvey = (id) => async dispatch => {
 
 export const createSurvey = (values) => async dispatch => {
     console.log("VALUES: ", values);
-    const request = "http://localhost/signoweb_backend/surveys/new";
+    // const request = "http://localhost/signoweb_backend/surveys/new";
+    const request = "http://api-surveys.tpsoares.com/surveys/new";
 
 
     try {

@@ -64,7 +64,7 @@ class Dashboard extends Component {
                                     className="survey-link"
                                     to={{pathname: 'survey', state: {...survey, status}}}
                                 >
-                                <div className="card-header info" style={{backgroundColor: status === 'between' ? '#1aff1a' : (status === 'coming' ? '#ffd633' : '#ff3333' )}}>
+                                <div className="card-header info" style={{backgroundColor: status === 'between' ? '#00cc00' : (status === 'coming' ? '#ffd633' : '#e60000' )}}>
                                     <strong>{survey.title}</strong> {survey.start_date} - {survey.end_date}
                                 </div>
 

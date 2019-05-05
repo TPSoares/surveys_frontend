@@ -35,7 +35,7 @@ class Edit extends Component {
 
         return (
             
-            <div className="container">
+            <div className="container form">
      
                 <Formik
                     initialValues={{
@@ -70,7 +70,7 @@ class Edit extends Component {
                         <div className="form-div-signup">
                             <Form className="form-div-inside-signup" onSubmit={handleSubmit}>
                             
-                                <FormControl className="form-control-signup" 
+                                <FormControl className="form-control form-field" 
                                 type="text" 
                                 name="title" 
                                 placeholder="Título"
@@ -80,7 +80,7 @@ class Edit extends Component {
                                 />
                                 {errors.title && touched.title && <div className="input-feedback">{errors.title}</div>}
 
-                                <FormControl className="form-control"
+                                <FormControl className="form-control form-field"
                                 type="text" 
                                 name="description" 
                                 placeholder="description"
@@ -90,7 +90,7 @@ class Edit extends Component {
                                 /> 
                                 {errors.description && touched.description && <div className="input-feedback" >{errors.description}</div>}
                                
-                                {/* <FormControl className="form-control"
+                                {/* <FormControl className="form-control form-field"
                                 type="date" 
                                 name="start_date" 
                                 placeholder="Data de início"
@@ -110,11 +110,11 @@ class Edit extends Component {
                                 /> 
                                 {errors.end_date && touched.end_date && <div className="input-feedback" >{errors.end_date}</div>} */}
 
-                                <Button className="btn btn-primary" type="submit">
+                                <Button className="btn btn-primary button" type="submit">
                                     Editar
                                 </Button>
                                 
-                                <Link className="btn btn-danger" to="/">
+                                <Link className="btn btn-danger button" to="/">
                                     Cancelar
                                 </Link>
                             </Form> 

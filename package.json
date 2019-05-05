@@ -1,5 +1,6 @@
 {
   "name": "restaurants",
+  "homepage": "http://enquetes.tpsoares.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
