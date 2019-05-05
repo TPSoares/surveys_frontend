@@ -26,8 +26,6 @@ class Newsurvey extends Component {
 
         return (
 
-
-            
             <div className="container form">
      
                 <Formik
@@ -85,7 +83,7 @@ class Newsurvey extends Component {
                                 onBlur={handleBlur}
                                 /> 
                                 {errors.description && touched.description && <div className="input-feedback" >{errors.description}</div>}
-                                <p>Coloque no mínimo 3 opções, separe-as por uma vírgula (Ex.: Opção 1, Opção 2, Opção 3)</p>
+                                <p>Coloque no mínimo 3 opções para votação, separe-as por uma vírgula (Ex.: Opção 1, Opção 2, Opção 3)</p>
                                 <FormControl className="form-control form-field"
                                 type="text" 
                                 name="survey_options" 

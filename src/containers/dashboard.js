@@ -53,6 +53,7 @@ class Dashboard extends Component {
                         if(dateCheck < from && dateCheck < to) {
                             status = 'coming';
                         }
+
                         //console.log(dateCheck > from && dateCheck < to)
                         // //console.log(from)
                         // //console.log(status)
