@@ -36,6 +36,8 @@ class Edit extends Component {
                 .required('Título é obrigatório'),
             description: Yup.string()
                 .required('Descrição é obrigatória'),
+            start_date: Yup.date('Data de início é obritatória'),
+            end_date: Yup.date('Data de fim é obrigatória')
         })
 
         return (
@@ -102,7 +104,7 @@ class Edit extends Component {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 /> 
-                                {errors.start_date && touched.start_date && <div className="input-feedback" >{errors.start_date}</div>}
+                                {errors.start_date && touched.start_date && <div className="input-feedback" >Preencha todos os campos!</div>}
                                 
                                 <FormControl className="form-control"
                                 type="date" 
@@ -113,7 +115,7 @@ class Edit extends Component {
                                 onBlur={handleBlur}
                                 min={values.start_date}
                                 /> 
-                                {errors.end_date && touched.end_date && <div className="input-feedback" >{errors.end_date}</div>}
+                                {errors.end_date && touched.end_date && <div className="input-feedback" >Preencha todos os campos!</div>}
 
                                 <Button className="btn btn-primary button" type="submit">
                                     Editar
