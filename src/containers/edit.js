@@ -19,7 +19,7 @@ class Edit extends Component {
     }
 
     componentWillMount() {
-        console.log(this.props.location);
+        //console.log(this.props.location);
         this.setState({
             survey: this.props.location.survey
         })
@@ -51,7 +51,7 @@ class Edit extends Component {
                             this.props.history.push('/');
 
                         } catch (err) {
-                            console.log("Error: ", err);
+                            //console.log("Error: ", err);
                         }
                     }}
                     validationSchema={EditSchema}

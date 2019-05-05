@@ -4,7 +4,7 @@ import {
 } from '../actions/types';
 
 export default function(state = [], action) {
-    // console.log(action);
+    // //console.log(action);
     switch(action.type) {
         case FETCH_SURVEY_DATA_SUCCESS:
             return action.payload;

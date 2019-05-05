@@ -19,15 +19,15 @@ export const getAllSurveys = () => async dispatch => {
 
     } catch (err) {
         if (err.response) {
-            console.log(err.response);
+            //console.log(err.response);
             dispatch({
                 type: FETCH_SURVEY_DATA_FAIL,
                 payload: err.response.data
             })
         } else if (err.request) {
-            console.log(err.request);
+            //console.log(err.request);
         } else {
-            console.log(err);
+            //console.log(err);
         }
     }
 }
@@ -36,10 +36,10 @@ export const sendVote = (vote) => async dispatch => {
     // const request = `http://localhost/signoweb_backend/survey_options/${vote}`;
     const request = `http://api-surveys.tpsoares.com/survey_options/${vote}`;
 
-    console.log(vote);
+    //console.log(vote);
     try {
         const response = await axios.post(request);
-        console.log("RESPONSE", response);
+        //console.log("RESPONSE", response);
         dispatch({
             type: FETCH_SURVEY_DATA_SUCCESS,
             payload: response.data.data
@@ -47,15 +47,15 @@ export const sendVote = (vote) => async dispatch => {
 
     } catch (err) {
         if (err.response) {
-            console.log(err.response);
+            //console.log(err.response);
             dispatch({
                 type: FETCH_SURVEY_DATA_FAIL,
                 payload: err.response.data
             })
         } else if (err.request) {
-            console.log(err.request);
+            //console.log(err.request);
         } else {
-            console.log(err);
+            //console.log(err);
         }
     }
 }
@@ -71,7 +71,7 @@ export const edit = (id, values) => async dispatch => {
         }, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
-        console.log("RESPONSE", response);
+        //console.log("RESPONSE", response);
         dispatch({
             type: FETCH_SURVEY_DATA_SUCCESS,
             payload: response.data.data
@@ -79,16 +79,16 @@ export const edit = (id, values) => async dispatch => {
 
     } catch (err) {
         if (err.response) {
-            console.log(err.response);
+            //console.log(err.response);
             dispatch({
                 type: FETCH_SURVEY_DATA_FAIL,
                 payload: err.response.data
             })
         } else if (err.request) {
-            console.log("ERR: ",err)
-            console.log(err.request);
+            //console.log("ERR: ",err)
+            //console.log(err.request);
         } else {
-            console.log(err);
+            //console.log(err);
         }
     }
 }
@@ -97,11 +97,11 @@ export const deleteSurvey = (id) => async dispatch => {
     // const request = `http://localhost/signoweb_backend/surveys/${id}`;
     const request = `http://api-surveys.tpsoares.com/surveys/${id}`;
 
-    // console.log("ID", id);
+    // //console.log("ID", id);
 
     try {
         const response = await axios.post(request);
-        console.log("RESPONSE", response);
+        //console.log("RESPONSE", response);
         dispatch({
             type: FETCH_SURVEY_DATA_SUCCESS,
             payload: response.data.data
@@ -109,21 +109,21 @@ export const deleteSurvey = (id) => async dispatch => {
 
     } catch (err) {
         if (err.response) {
-            console.log(err.response);
+            //console.log(err.response);
             dispatch({
                 type: FETCH_SURVEY_DATA_FAIL,
                 payload: err.response.data
             })
         } else if (err.request) {
-            console.log(err.request);
+            //console.log(err.request);
         } else {
-            console.log(err);
+            //console.log(err);
         }
     }
 }
 
 export const createSurvey = (values) => async dispatch => {
-    console.log("VALUES: ", values);
+    //console.log("VALUES: ", values);
     // const request = "http://localhost/signoweb_backend/surveys/new";
     const request = "http://api-surveys.tpsoares.com/surveys/new";
 
@@ -138,7 +138,7 @@ export const createSurvey = (values) => async dispatch => {
         }, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
-        console.log("RESPONSE", response);
+        //console.log("RESPONSE", response);
         dispatch({
             type: FETCH_SURVEY_DATA_SUCCESS,
             payload: response.data
@@ -146,16 +146,16 @@ export const createSurvey = (values) => async dispatch => {
 
     } catch (err) {
         if (err.response) {
-            console.log(err.response);
+            //console.log(err.response);
             dispatch({
                 type: FETCH_SURVEY_DATA_FAIL,
                 payload: err.response.data
             })
         } else if (err.request) {
-            console.log("ERR: ",err)
-            console.log(err.request);
+            //console.log("ERR: ",err)
+            //console.log(err.request);
         } else {
-            console.log(err);
+            //console.log(err);
         }
     }
 }

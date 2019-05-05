@@ -10,9 +10,9 @@ import { getAllSurveys } from '../actions/surveys';
 class Dashboard extends Component {    
 
     componentWillMount() {
-        console.log("MOUNTING");
+        //console.log("MOUNTING");
         this.props.getAllSurveys();
-        console.log("SURVEYS", this.props.surveys);
+        //console.log("SURVEYS", this.props.surveys);
 
     }
     
@@ -34,7 +34,7 @@ class Dashboard extends Component {
                         var d1 = dateFrom.split("/");
                         var d2 = dateTo.split("/");
                         // var c = dateCheck.split("/");
-                        // console.log(d1);
+                        // //console.log(d1);
 
                         var from = new Date(d1[2], parseInt(d1[1])-1, d1[0]);  // -1 because months are from 0 to 11
                         var to   = new Date(d2[2], parseInt(d2[1])-1, d2[0]);
@@ -53,9 +53,9 @@ class Dashboard extends Component {
                         if(dateCheck < from && dateCheck < to) {
                             status = 'coming';
                         }
-                        console.log(dateCheck > from && dateCheck < to)
-                        // console.log(from)
-                        // console.log(status)
+                        //console.log(dateCheck > from && dateCheck < to)
+                        // //console.log(from)
+                        // //console.log(status)
 
                         return (
 

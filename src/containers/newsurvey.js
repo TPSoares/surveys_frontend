@@ -45,7 +45,7 @@ class Newsurvey extends Component {
                             this.props.history.push('/');
 
                         } catch (err) {
-                            console.log("Error: ", err);
+                            //console.log("Error: ", err);
                         }
                     }}
                     validationSchema={SurveySchema}

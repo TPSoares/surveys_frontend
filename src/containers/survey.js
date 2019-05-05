@@ -29,7 +29,7 @@ class Survey extends Component {
 
     componentWillReceiveProps(nextProps) {
         if(this.props.surveys !== nextProps.surveys) {
-            // console.log("newprops", nextProps);
+            // //console.log("newprops", nextProps);
             this.setState({
                 survey: {
                     id: nextProps.surveys[0].id,
