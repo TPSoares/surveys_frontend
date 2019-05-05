@@ -10,11 +10,13 @@ import { getAllSurveys } from '../actions/surveys';
 class Dashboard extends Component {    
 
     componentWillMount() {
+        console.log("MOUNTING");
         this.props.getAllSurveys();
-    }
+        console.log("SURVEYS", this.props.surveys);
 
+    }
+    
     render() {
-        console.log(this.props.surveys);
         return(
             <div>
                 <Nav />

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from 'react-redux';
-import { Formik, Field } from "formik";
-import { sendVote } from '../actions/surveys';
+import { Link } from 'react-router-dom';
+import { sendVote, deleteSurvey } from '../actions/surveys';
 import Yup from "yup";
 import "../styles/style.css";
 
@@ -17,6 +17,7 @@ class Survey extends Component {
 
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.vote = this.vote.bind(this);
+        this.delete = this.delete.bind(this);
         
     }
 
@@ -54,15 +55,18 @@ class Survey extends Component {
         this.props.sendVote(this.state.selectedOption);
     }
 
+    delete = () => {
+        this.props.deleteSurvey(this.state.survey.id);
+    }
+
 
     render() {
 
-        console.log("AAAAA", this.state.survey);
         return(
             <div className="container">
-                <div className="card">
+                <div className="card survey">
                 <div className="card-header info" style={{backgroundColor: this.state.survey.status === 'between' ? '#1aff1a' : (this.state.survey.status === 'coming' ? '#ffd633' : '#ff3333' )}}>
-                    <strong>{this.state.survey.title}</strong> {this.state.survey.start_date} - {this.state.survey.end_date}
+                    <strong>{this.state.survey.title} </strong> <p>{this.state.survey.status === 'between' ? 'Em andamento' : (this.state.survey.status === 'coming' ? 'Não iniciada' : 'Finalizada' )}</p> Início: {this.state.survey.start_date} - Fim: {this.state.survey.end_date}
                 </div>
                     <div className="card-body">
                         <h5 className="card-title">{this.state.survey.description}</h5>
@@ -81,8 +85,24 @@ class Survey extends Component {
                             })
                         }
                         <div className="vote">
-                            <button className="btn btn-primary" onClick={() => {this.vote()}}>Votar</button>
+                            <button className="btn btn-primary button" disabled={this.state.survey.status !== 'between'} onClick={() => {this.vote()}}>Votar</button>
+                            <Link className="btn btn-danger button" to="/">
+                                Cancelar
+                            </Link>
                         </div>
+
+                        <div className="survey-edit-delete">
+                            <Link className="btn btn-warning button" to={{pathname: 'edit', survey: this.state.survey}}>Editar enquete</Link>
+
+                            <button className="btn btn-danger button" onClick={
+                                async () => {
+                                    await this.delete()
+                                    this.props.history.push('/');
+                                    
+                                }
+                            }>Deletar enquete</button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -100,7 +120,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps (dispatch) {
-    return bindActionCreators({ sendVote }, dispatch)
+    return bindActionCreators({ sendVote, deleteSurvey }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Survey);
