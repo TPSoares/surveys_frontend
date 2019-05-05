@@ -14,15 +14,20 @@ class Edit extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            survey: {},
+            survey: {
+                title: '',
+                description: '',
+            },
         }
     }
 
     componentWillMount() {
         //console.log(this.props.location);
-        this.setState({
-            survey: this.props.location.survey
-        })
+        if(this.props.location.survey) {
+            this.setState({
+                survey: this.props.location.survey
+            })
+        }
     }
 
     render() {
@@ -30,7 +35,7 @@ class Edit extends Component {
             title: Yup.string()
                 .required('Título é obrigatório'),
             description: Yup.string()
-                .required('Decrição é obrigatória'),
+                .required('Descrição é obrigatória'),
         })
 
         return (
@@ -66,8 +71,8 @@ class Edit extends Component {
                         touched,
                     } = props;
                     return (
-                        <div className="form-div-signup">
-                            <Form className="form-div-inside-signup" onSubmit={handleSubmit}>
+                        <div className="form-div">
+                            <Form className="form-div-inside" onSubmit={handleSubmit}>
                             
                                 <FormControl className="form-control form-field" 
                                 type="text" 
@@ -82,14 +87,14 @@ class Edit extends Component {
                                 <FormControl className="form-control form-field"
                                 type="text" 
                                 name="description" 
-                                placeholder="description"
+                                placeholder="Descrição"
                                 value={values.description}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 /> 
                                 {errors.description && touched.description && <div className="input-feedback" >{errors.description}</div>}
                                
-                                {/* <FormControl className="form-control form-field"
+                                <FormControl className="form-control form-field"
                                 type="date" 
                                 name="start_date" 
                                 placeholder="Data de início"
@@ -106,8 +111,9 @@ class Edit extends Component {
                                 value={values.end_date}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
+                                min={values.start_date}
                                 /> 
-                                {errors.end_date && touched.end_date && <div className="input-feedback" >{errors.end_date}</div>} */}
+                                {errors.end_date && touched.end_date && <div className="input-feedback" >{errors.end_date}</div>}
 
                                 <Button className="btn btn-primary button" type="submit">
                                     Editar

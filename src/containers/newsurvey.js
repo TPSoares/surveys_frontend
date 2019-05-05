@@ -11,10 +11,8 @@ import { createSurvey } from '../actions/surveys';
 
 class Newsurvey extends Component {
 
-
-
     render() {
-
+    
         const SurveySchema = Yup.object().shape({
             title: Yup.string()
                 .required('Título é obrigatório'),
@@ -27,6 +25,7 @@ class Newsurvey extends Component {
         })
 
         return (
+
 
             
             <div className="container form">
@@ -64,8 +63,8 @@ class Newsurvey extends Component {
                         touched,
                     } = props;
                     return (
-                        <div className="form-div-signup">
-                            <Form className="form-div-inside-signup" onSubmit={handleSubmit}>
+                        <div className="form-div">
+                            <Form className="form-div-inside" onSubmit={handleSubmit}>
                             
                                 <FormControl className="form-control form-field" 
                                 type="text" 
@@ -115,6 +114,7 @@ class Newsurvey extends Component {
                                 value={values.end_date}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
+                                min={values.start_date}
                                 /> 
                                 {errors.end_date && touched.end_date && <div className="input-feedback" >{errors.end_date}</div>}
 

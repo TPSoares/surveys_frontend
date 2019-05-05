@@ -71,7 +71,11 @@ class Survey extends Component {
                     <div className="survey-edit-delete">
                         <h5 className="card-title">{this.state.survey.description}</h5>
                         <div className="">
-                            <Link className="btn btn-default button button-edit" to={{pathname: 'edit', survey: this.state.survey}}>Editar enquete</Link>
+                            <Link 
+                                className="btn btn-default button button-edit" 
+                                to={{pathname: 'edit', survey: {...this.state.survey}}}>
+                                Editar enquete
+                            </Link>
 
                             <button className="btn btn-default button button-delete" onClick={
                                 async () => {

@@ -68,6 +68,8 @@ export const edit = (id, values) => async dispatch => {
         const response = await axios.post(request, {
             title: values.title,
             description: values.description,
+            start_date: values.start_date,
+            end_date: values.end_date
         }, {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });

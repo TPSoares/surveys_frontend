@@ -8,10 +8,34 @@ import thunk from "redux-thunk";
 import axios from 'axios';
 window.axios = axios;
 
-const store = createStore(Reducers, applyMiddleware(thunk));
-// store.subscribe(() => 
-//     console.log("store", store.getState()
-// ));
+// START SAVE STATE
+const loadState = () => {
+    try {
+      const serializedState = localStorage.getItem('state');
+      if(serializedState === null) {
+        return undefined;
+      }
+      return JSON.parse(serializedState);
+    } catch (e) {
+      return undefined;
+    }
+  };
+  
+  const saveState = (state) => {
+    try {
+      const serializedState = JSON.stringify(state);
+      localStorage.setItem('state', serializedState);
+    } catch (e) {
+      // Ignore write errors;
+    }
+  };
+
+// END SAVE STATE
+
+const store = createStore(Reducers, loadState(), applyMiddleware(thunk));
+store.subscribe(() => {
+    saveState(store.getState());
+});
 
 ReactDOM.render(
     <Provider store={store}>
