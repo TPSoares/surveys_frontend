@@ -69,7 +69,7 @@ class Dashboard extends Component {
                                 </div>
 
                                 <div className="card-body">
-                                    <p><strong>Description: </strong>{survey.description}</p>
+                                    <p><strong>Descrição: </strong>{survey.description}</p>
                                     {/* <hr></hr>
                                     {
                                         survey.survey_options.map(options => {

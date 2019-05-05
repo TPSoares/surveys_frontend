@@ -11,10 +11,10 @@ import { createSurvey } from '../actions/surveys';
 
 class Newsurvey extends Component {
 
-    componentWillUpdate() {
-    }
+
 
     render() {
+
         const SurveySchema = Yup.object().shape({
             title: Yup.string()
                 .required('Título é obrigatório'),
@@ -27,6 +27,7 @@ class Newsurvey extends Component {
         })
 
         return (
+
             
             <div className="container form">
      
@@ -42,7 +43,10 @@ class Newsurvey extends Component {
 
                         try {
                             await this.props.createSurvey(values)
-                            this.props.history.push('/');
+                            if(this.props.surveys.error === "") {
+
+                                this.props.history.push('/');
+                            }
 
                         } catch (err) {
                             //console.log("Error: ", err);
@@ -93,6 +97,7 @@ class Newsurvey extends Component {
                                 onBlur={handleBlur}
                                 /> 
                                 {errors.survey_options && touched.survey_options && <div className="input-feedback" >{errors.survey_options}</div>}
+                                <div style={{color: "#C00"}}>{this.props.surveys.error ==! "" ? "" : this.props.surveys.error}</div>
                                
                                 <FormControl className="form-control form-field"
                                 type="date" 
@@ -133,7 +138,7 @@ class Newsurvey extends Component {
 
 function mapStateToProps(state) {
     return {
-    
+        surveys: state.surveys
     };
 }
 

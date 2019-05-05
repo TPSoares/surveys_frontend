@@ -9,7 +9,9 @@ import axios from 'axios';
 window.axios = axios;
 
 const store = createStore(Reducers, applyMiddleware(thunk));
-store.subscribe(() => //console.log("store", store.getState()));
+store.subscribe(() => 
+    console.log("store", store.getState()
+));
 
 ReactDOM.render(
     <Provider store={store}>
